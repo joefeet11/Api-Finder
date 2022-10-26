@@ -15,24 +15,21 @@ function App() {
     fetch(API)
     .then(resp => resp.json())
     .then(apiArray => {
-      setApis(apiArray)
+      setApis(apiArray.entries)
+      console.log(apiArray.entries)
     })
   }, []);
+  
 
   return (
     <div className="App">
-      
       < Header />
-      
         <Routes>
           <Route exact path="/" element={<Home apis = {apis}/>}/>
           <Route exact path="/Search" element={<Search/>}/>
           <Route exact path="/Addapi" element={<AddApi/>}/>
           <Route exact path="/Myapi" element={<MyApi/>}/>
-          
         </Routes>
-      
-    
     </div>
   );
 }
