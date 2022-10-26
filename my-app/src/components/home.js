@@ -1,5 +1,5 @@
 import React from "react";
-import ApiContainer from "./apicontainer";
+import ApiContainer from "./apiContainer";
 
 function Home({ apis }) {
     console.log(apis)

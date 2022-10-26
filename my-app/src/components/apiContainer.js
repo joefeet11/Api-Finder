@@ -1,11 +1,11 @@
 import React from "react";
-import ApiCard from "./apicard";
+import ApiCard from "./apiCard";
 
 function ApiContainer({apis}) {
 
     return (
         <div>
-            <ApiCard api = {apis}/>
+            {apis.map(api => <ApiCard key={api.id} api={api}/>)}
         </div>
     )
 }
