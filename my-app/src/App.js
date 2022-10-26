@@ -1,16 +1,18 @@
 import React, {useState, useEffect} from "react";
 import Header from "./components/header.js"
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import {Routes, Route} from "react-router-dom"
 import Home from "./components/home"
 import Search from "./components/search"
 import Myapi from "./components/myapis.js"
 import Addapi from "./components/addapi.js"
 
 import './App.css';
-const api = 'https://api.publicapis.org/random'
+const api = 'http://localhost:3500/entries'
 
 function App() {
   const [apis, setApis] = useState([])
+  const [search, setSearch] = useState('')
+  const [homeapis, setHomeapis] = useState([])
 
   useEffect(() => {
     fetch(api)
@@ -19,6 +21,11 @@ function App() {
     
   }, [] )
   console.log(apis)
+
+  const filteredApis = apis.filter((api)=> {
+    return api.Description.toLowerCase().includes(search.toLowerCase())
+  })
+  
     
     
     
@@ -29,7 +36,7 @@ function App() {
       
         <Routes>
           <Route exact path="/" element={<Home apis = {apis}/>}/>
-          <Route exact path="/Search" element={<Search/>}/>
+          <Route exact path="/Search" element={<Search apis ={filteredApis} search ={search} setSearch= {setSearch}/>}/>
           <Route exact path="/Addapi" element={<Addapi/>}/>
           <Route exact path="/Myapi" element={<Myapi/>}/>
           
