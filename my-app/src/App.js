@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Header from "./components/header.js"
-import {BrowserRouter as Routes, Route} from "react-router-dom"
+import {Routes, Route} from "react-router-dom"
 import Home from "./components/home"
 import Search from "./components/search"
 import MyApi from "./components/myApis.js"
