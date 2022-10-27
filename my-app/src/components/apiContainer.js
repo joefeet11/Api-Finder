@@ -5,7 +5,7 @@ function ApiContainer({apis}) {
 
     return (
         <div>
-            {apis.map(api => <ApiCard key={api.link} api={api}/>)}
+            {apis.map(api => <ApiCard key={api.API} api={api}/>)}
         </div>
     )
 }

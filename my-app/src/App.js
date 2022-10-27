@@ -15,9 +15,10 @@ function App() {
     fetch(API)
     .then(resp => resp.json())
     .then(apiArray => {
-      const shuffle= apiArray.entries.sort(() => 0.5 - Math.random()).filter((item, index) => index % 285 === 0);
+      const shuffle= [...apiArray.entries].sort(() => 0.5 - Math.random()).filter((item, index) => index % 285 === 0);
       setApis(shuffle)
     })
+    .catch(console.error)
   }, []);
   
 
