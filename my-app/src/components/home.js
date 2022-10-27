@@ -1,10 +1,10 @@
 import React from "react";
 import ApiContainer from "./apicontainer";
 
-function Home({apis}) {
+function Home({apis, onAddApi}) {
     return (
         <div id="home">
-            <ApiContainer apis={apis}/>
+            <ApiContainer apis={apis} onApiClick={onAddApi} />
         </div>
     );
 }

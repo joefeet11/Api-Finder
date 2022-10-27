@@ -1,7 +1,7 @@
 import React from "react";
 import ApiContainer from "./apicontainer";
 
-function Search({search, setSearch, apis}) {
+function Search({search, setSearch, apis, onAddApi}) {
     return (
         <div className="ui large fluid icon input">
       <input
@@ -11,7 +11,7 @@ function Search({search, setSearch, apis}) {
         onChange={(e) => setSearch(e.target.value)}
       />
       <i className="circular search link icon"></i>
-      <ApiContainer apis={apis}/>
+      <ApiContainer apis={apis} onApiClick={onAddApi}/>
     </div>
     
 

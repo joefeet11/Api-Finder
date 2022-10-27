@@ -7,20 +7,59 @@ import Myapi from "./components/myapis.js"
 import Addapi from "./components/addapi.js"
 
 import './App.css';
-const api = 'http://localhost:3500/entries'
+const API = 'https://api.publicapis.org/entries'
+const LocalApi = 'http://localhost:3500/entries'
 
 function App() {
   const [apis, setApis] = useState([])
   const [search, setSearch] = useState('')
-  const [homeapis, setHomeapis] = useState([])
+  const [myApis, setMyApis] = useState([])
 
   useEffect(() => {
-    fetch(api)
-    .then(res => res.json())
-    .then(apis => setApis(apis))
+    fetch(API)
+    .then(resp => resp.json())
+    .then(apiArray => {
+      setApis(apiArray.entries)
+      })
+    .catch(console.error)
+
     
-  }, [] )
-  console.log(apis)
+      
+
+  }, []);
+
+    useEffect(() => {
+     fetch(LocalApi)
+      .then(resp => resp.json())
+      .then(apiArray => {
+        setMyApis(apiArray)
+        })
+      .catch(console.error)
+      
+    
+      
+
+   }, []);
+
+  function addApi(apiToAdd) {
+     const apiSend = myApis.find(api => api.Description === apiToAdd.Description)
+     if (!apiSend) {
+       setMyApis([...myApis, apiToAdd ])
+     }
+   }
+   function removeApi(apiToRemove) {
+     setMyApis((myApis) => 
+     myApis.filter((api) => api.Description !== apiToRemove.Description))
+   }
+
+  
+ 
+  const shuffle = [...apis].sort(() => 0.5 - Math.random()).filter((item, index) => index % 285 === 0);
+  
+ 
+
+  
+  
 
   const filteredApis = apis.filter((api)=> {
     return api.Description.toLowerCase().includes(search.toLowerCase())
@@ -32,13 +71,13 @@ function App() {
   return (
     <div className="App">
       
-      < Header />
+      < Header  />
       
         <Routes>
-          <Route exact path="/" element={<Home apis = {apis}/>}/>
-          <Route exact path="/Search" element={<Search apis ={filteredApis} search ={search} setSearch= {setSearch}/>}/>
+          <Route exact path="/" element={<Home apis = {shuffle} onAddApi={addApi} />}/>
+          <Route exact path="/Search" element={<Search apis ={filteredApis} search ={search} setSearch= {setSearch} onAddApi={addApi}/>}/>
           <Route exact path="/Addapi" element={<Addapi/>}/>
-          <Route exact path="/Myapi" element={<Myapi/>}/>
+          <Route exact path="/Myapi" element={<Myapi apis={myApis} onRemoveApi={removeApi} />}/>
           
         </Routes>
       
