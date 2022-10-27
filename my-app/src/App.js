@@ -41,17 +41,44 @@ function App() {
 
    }, []);
 
-  function addApi(apiToAdd) {
-     const apiSend = myApis.find(api => api.Description === apiToAdd.Description)
-     if (!apiSend) {
-       setMyApis([...myApis, apiToAdd ])
-     }
-   }
-   function removeApi(apiToRemove) {
-     setMyApis((myApis) => 
-     myApis.filter((api) => api.Description !== apiToRemove.Description))
-   }
+   const addApi = apiToAdd => {
+    setMyApis([...myApis, apiToAdd]);
+    setApis(apis.filter(api => api.Link !== apiToAdd.Link));
+    
+  };
 
+  const removeApi = apiToAdd => {
+    setApis([...apis, apiToAdd]);
+    setMyApis(myApis.filter(api => api.Link !== apiToAdd.Link));
+   
+  };
+
+  function handlePost(data) {
+    fetch(LocalApi, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        
+      },
+      body: JSON.stringify(data),
+    })
+    .then((resp) => resp.json())
+    .then(addApi)
+
+  }
+  async function handleDelete(data) {
+    await fetch(`http://localhost:3500/entries/${data.id}`,{
+      method:"DELETE",
+    })
+    .then((resp) => resp.json())
+    .then(removeApi(data))
+
+    
+
+  }
+
+
+  
   
  
   const shuffle = [...apis].sort(() => 0.5 - Math.random()).filter((item, index) => index % 285 === 0);
@@ -74,10 +101,10 @@ function App() {
       < Header  />
       
         <Routes>
-          <Route exact path="/" element={<Home apis = {shuffle} onAddApi={addApi} />}/>
-          <Route exact path="/Search" element={<Search apis ={filteredApis} search ={search} setSearch= {setSearch} onAddApi={addApi}/>}/>
+          <Route exact path="/" element={<Home apis = {shuffle} onAddApi={handlePost} />}/>
+          <Route exact path="/Search" element={<Search apis ={filteredApis} search ={search} setSearch= {setSearch} onAddApi={handlePost}/>}/>
           <Route exact path="/Addapi" element={<Addapi/>}/>
-          <Route exact path="/Myapi" element={<Myapi apis={myApis} onRemoveApi={removeApi} />}/>
+          <Route exact path="/Myapi" element={<Myapi apis={myApis} onRemoveApi={handleDelete} />}/>
           
         </Routes>
       
