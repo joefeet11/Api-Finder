@@ -83,7 +83,7 @@
 }
 
 .searchBar{
-  width: 75%;
+  width: 70%;
   text-align: center;
   height: 46px;
   border-radius: 48px;
@@ -131,4 +131,12 @@ a:active {
 .heartButton {
   font-size: 20px;
   cursor: pointer;
+}
+
+.filter{
+  cursor: pointer;
+}
+
+.filterText{
+  color:white;
 }

@@ -5,8 +5,8 @@ function Search({search, setSearch, apis, onAddApi, filterState, setFilterState}
     return (
       <div className="searchContainer">
       <label>
-        <strong>Filter:</strong>
-        <select onChange={(e) => setFilterState(e.target.value)} value={filterState}>
+        <strong className="filterText">Filter Categoreis:</strong>
+        <select onChange={(e) => setFilterState(e.target.value)} value={filterState} className="filter">
           <option value="All">All</option>
           <option value="Animals">Animals</option>
           <option value="Anime">Anime</option>
@@ -17,7 +17,7 @@ function Search({search, setSearch, apis, onAddApi, filterState, setFilterState}
           <option value="Entertainment">Entertainment</option>
           <option value="Environment">Environment</option>
           <option value="Finance">Finance</option>
-          <option value="Food">Food</option>
+          <option value="Geocoding">Geocoding</option>
           <option value="Government">Government</option>
           <option value="Music">Music</option>
           <option value="Programming">Programming</option>

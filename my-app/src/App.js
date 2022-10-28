@@ -59,8 +59,8 @@ function App() {
     .then(addApi)
 
   }
-  async function handleDelete(data) {
-    await fetch(`http://localhost:3500/entries/${data.id}`,{
+   function handleDelete(data) {
+     fetch(`http://localhost:3500/entries/${data.id}`,{
       method:"DELETE",
     })
     .then((resp) => resp.json())
@@ -70,47 +70,37 @@ function App() {
 
   }
 
-
-  
-  
+const slice = apis.slice(0,6)
  
-  const shuffle = apis.slice(0,6)
+const filteredApis = apis.filter((api)=> {
+  return api.Description.toLowerCase().includes(search.toLowerCase())
+})
+  
+function filteredCategories() {
+  if (filterState === "All") {
+    return filteredApis
+  }
+  else {
+    return filteredApis.filter(
+      (api) => api.Category === filterState
+    );
+  }
+};
  
-
-  
-  
-
-  const filteredApis = apis.filter((api)=> {
-    return api.Description.toLowerCase().includes(search.toLowerCase())
-  })
-  
-  function filteredCategories() {
-    if (filterState === "All") {
-      return filteredApis
-    }
-    else {
-      return filteredApis.filter(
-        (api) => api.Category === filterState
-      );
-    }
-  };
- 
+return (
+  <div className="App">
     
+    < Header  />
     
-  return (
-    <div className="App">
-      
-      < Header  />
-      
-        <Routes>
-          <Route exact path="/" element={<Home apis = {apis} onAddApi={handlePost} />}/>
-          <Route exact path="/Search" element={<Search filterState={filterState} setFilterState={setFilterState} apis ={filteredCategories()} search ={search} setSearch= {setSearch} onAddApi={handlePost}/>}/>
-          <Route exact path="/Myapi" element={<Myapi apis={myApis} onRemoveApi={handleDelete} />}/>
-        </Routes>
-      
+      <Routes>
+        <Route exact path="/" element={<Home apis = {slice} onAddApi={handlePost} />}/>
+        <Route exact path="/Search" element={<Search filterState={filterState} setFilterState={setFilterState} apis ={filteredCategories()} search ={search} setSearch= {setSearch} onAddApi={handlePost}/>}/>
+        <Route exact path="/Myapi" element={<Myapi apis={myApis} onRemoveApi={handleDelete} />}/>
+      </Routes>
     
-    </div>
-  );
+  
+  </div>
+);
 }
 
 export default App;
