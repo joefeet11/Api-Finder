@@ -22,10 +22,6 @@ function App() {
       setApis(apiArray.entries)
       })
     .catch(console.error)
-
-    
-      
-
   }, []);
 
     useEffect(() => {
@@ -35,11 +31,7 @@ function App() {
         setMyApis(apiArray)
         })
       .catch(console.error)
-      
-    
-      
-
-   }, []);
+    }, []);
 
    const addApi = apiToAdd => {
     setMyApis([...myApis, apiToAdd]);

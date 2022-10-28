@@ -36,3 +36,45 @@
     transform: rotate(360deg);
   }
 }
+
+.linkContainer{
+  text-align: center;
+  padding: 30px;
+  background-color: green;
+  width: 100%;
+}
+
+.links {
+  position: fixed;
+  align-items: stretch;
+  top: 0px;
+  left:0px;
+
+  padding: 10px;
+  background-color: green;
+  font-size: 30px;
+}
+
+.apiContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 1rem;
+  background-color: aqua;
+}
+
+.apiCard{
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  border: solid 3px;
+  grid-gap: 1rem;
+  white-space: pre-wrap;
+  background: #BCAE83;
+  opacity: .8;
+  box-shadow: 5px 10px;
+}
+
+.searchBar{
+  
+}

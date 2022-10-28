@@ -11,7 +11,7 @@ function ApiContainer({apis, onApiClick}) {
     ))
 
     return (
-        <div>
+        <div className="apiContainer">
             {apiData}
         </div>
     )
