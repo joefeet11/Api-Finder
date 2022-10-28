@@ -7,14 +7,12 @@ function ApiCard({api, onApiClick}) {
   }
     
     return(
-        <div onClick={() => handleClick(api) }className = "apiCard" key ={api.Link}>
-        <h5 className="card-title">{api.API}</h5>
-          <p className="card-text">{api.Description}</p>
-          <p className="card-text">{api.Link}</p>
-          <p className="card-text">{api.Category}</p>
-          <p className="card-text">{api.Auth}</p>
-          
-          
+        <div onClick={() => handleClick(api) } key ={api.Link} className="apiCard">
+          <h1 >{api.API}</h1>
+            <p ><strong>Description <br/></strong>{api.Description}</p>
+            <a href={api.Link}><p ><strong>Link<br/></strong>{api.Link}</p></a>
+            <p ><strong>Category<br/></strong>{api.Category}</p>
+            <p ><strong>Authorization<br/></strong>{api.Auth || "None"}</p>
         </div>
     )
 }
