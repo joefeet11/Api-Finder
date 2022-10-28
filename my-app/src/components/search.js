@@ -1,9 +1,30 @@
 import React from "react";
 import ApiContainer from "./apicontainer";
 
-function Search({search, setSearch, apis, onAddApi}) {
+function Search({search, setSearch, apis, onAddApi, filterState, setFilterState}) {
     return (
       <div className="searchContainer">
+      <label>
+        <strong>Filter:</strong>
+        <select onChange={(e) => setFilterState(e.target.value)} value={filterState}>
+          <option value="All">All</option>
+          <option value="Animals">Animals</option>
+          <option value="Anime">Anime</option>
+          <option value="Blockchain">Blockchain</option>
+          <option value="Books">Books</option>
+          <option value="Business">Business</option>
+          <option value="Development">Development</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="Environment">Environment</option>
+          <option value="Finance">Finance</option>
+          <option value="Food">Food</option>
+          <option value="Government">Government</option>
+          <option value="Music">Music</option>
+          <option value="Programming">Programming</option>
+          <option value="Transportation">Transportation</option>
+          
+        </select>
+      </label>
         <input
           value = {search}
           type="text"

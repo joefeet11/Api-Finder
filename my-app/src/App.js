@@ -13,7 +13,9 @@ function App() {
   const [apis, setApis] = useState([])
   const [search, setSearch] = useState('')
   const [myApis, setMyApis] = useState([])
+  const [filterState, setFilterState] = useState('All')
 
+  
   useEffect(() => {
     fetch(API)
     .then(resp => resp.json())
@@ -82,7 +84,17 @@ function App() {
     return api.Description.toLowerCase().includes(search.toLowerCase())
   })
   
-    
+  function filteredCategories() {
+    if (filterState === "All") {
+      return filteredApis
+    }
+    else {
+      return filteredApis.filter(
+        (api) => api.Category === filterState
+      );
+    }
+  };
+ 
     
     
   return (
@@ -91,8 +103,8 @@ function App() {
       < Header  />
       
         <Routes>
-          <Route exact path="/" element={<Home apis = {shuffle} onAddApi={handlePost} />}/>
-          <Route exact path="/Search" element={<Search apis ={filteredApis} search ={search} setSearch= {setSearch} onAddApi={handlePost}/>}/>
+          <Route exact path="/" element={<Home apis = {apis} onAddApi={handlePost} />}/>
+          <Route exact path="/Search" element={<Search filterState={filterState} setFilterState={setFilterState} apis ={filteredCategories()} search ={search} setSearch= {setSearch} onAddApi={handlePost}/>}/>
           <Route exact path="/Myapi" element={<Myapi apis={myApis} onRemoveApi={handleDelete} />}/>
         </Routes>
       
