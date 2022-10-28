@@ -93,27 +93,27 @@
   padding-left: 10px;
   font-family: 'Kumbh Sans', sans-serif;
   background-color: #CDCDCD;
-  
+  cursor: pointer;
 }
 
 a:link {
   color: red;
+  cursor: pointer;
 }
 
 a:visited {
   color: #edc56f;
+  cursor: pointer;
 }
 
 a:hover {
   color: #ccdb3d;
+  cursor: pointer;
 }
 
 a:active {
   color: blue;
-}
-
-.searchContainer{
-  background-color: #102F3C;
+  cursor: pointer;
 }
 
 .home{
@@ -127,4 +127,9 @@ a:active {
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
+}
+
+.heartButton {
+  font-size: 20px;
+  cursor: pointer;
 }

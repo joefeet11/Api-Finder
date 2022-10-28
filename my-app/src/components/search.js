@@ -11,6 +11,10 @@ function Search({search, setSearch, apis, onAddApi}) {
           onChange={(e) => setSearch(e.target.value)}
           className="searchBar"
         />
+        <br/>
+        <br/> 
+        <br/>
+        <br/>
         <ApiContainer apis={apis} onApiClick={onAddApi}/>
     </div>
     
