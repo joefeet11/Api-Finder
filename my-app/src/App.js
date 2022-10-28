@@ -4,7 +4,6 @@ import {Routes, Route} from "react-router-dom"
 import Home from "./components/home"
 import Search from "./components/search"
 import Myapi from "./components/myapis.js"
-import Addapi from "./components/addapi.js"
 
 import './App.css';
 const API = 'https://api.publicapis.org/entries'
@@ -73,8 +72,7 @@ function App() {
   
   
  
-  const shuffle = [...apis].sort(() => 0.5 - Math.random()).filter((item, index) => index % 285 === 0);
-  
+  const shuffle = apis.slice(0,6)
  
 
   
@@ -95,9 +93,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home apis = {shuffle} onAddApi={handlePost} />}/>
           <Route exact path="/Search" element={<Search apis ={filteredApis} search ={search} setSearch= {setSearch} onAddApi={handlePost}/>}/>
-          <Route exact path="/Addapi" element={<Addapi/>}/>
           <Route exact path="/Myapi" element={<Myapi apis={myApis} onRemoveApi={handleDelete} />}/>
-          
         </Routes>
       
     

@@ -22,10 +22,12 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  font-family: 'Kumbh Sans', sans-serif;
 }
 
 .App-link {
   color: #61dafb;
+  font-family: 'Kumbh Sans', sans-serif;
 }
 
 @keyframes App-logo-spin {
@@ -40,8 +42,9 @@
 .linkContainer{
   text-align: center;
   padding: 30px;
-  background-color: green;
   width: 100%;
+  font-family: 'Kumbh Sans', sans-serif;
+  background-color: #102F3C;
 }
 
 .links {
@@ -49,18 +52,21 @@
   align-items: stretch;
   top: 0px;
   left:0px;
-
   padding: 10px;
-  background-color: green;
   font-size: 30px;
+  font-family: 'Kumbh Sans', sans-serif;
+  z-index: unset;
 }
 
 .apiContainer {
+  width:100%;
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: auto;
   grid-gap: 1rem;
-  background-color: aqua;
+  font-family: 'Kumbh Sans', sans-serif;
+  background-color: #102f3c;
 }
 
 .apiCard{
@@ -70,11 +76,55 @@
   border: solid 3px;
   grid-gap: 1rem;
   white-space: pre-wrap;
-  background: #BCAE83;
   opacity: .8;
   box-shadow: 5px 10px;
+  font-family: 'Kumbh Sans', sans-serif;
+  background-color: #B7BE9D;
 }
 
 .searchBar{
+  width: 100%;
+  text-align: center;
+  height: 46px;
+  border-radius: 48px;
+  border: 3px solid lightgrey;
+  width: 100%;
+  padding-right: 40px;
+  padding-left: 10px;
+  font-family: 'Kumbh Sans', sans-serif;
+  background-color: #CDCDCD;
   
+}
+
+a:link {
+  color: red;
+}
+
+a:visited {
+  color: #edc56f;
+}
+
+a:hover {
+  color: #ccdb3d;
+}
+
+a:active {
+  color: blue;
+}
+
+.searchContainer{
+  background-color: #102F3C;
+}
+
+.home{
+  background-color: #102F3C;
+}
+
+.headerText {
+  font-size: 35px;
+  font-weight: 600;
+  background-image: linear-gradient(to left, #306E79, #ccdb3d);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 }
